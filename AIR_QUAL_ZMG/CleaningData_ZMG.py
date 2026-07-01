@@ -14,18 +14,18 @@ print((raw18.isna().mean()*100).sort_values(ascending=False)) #.isna retrieves a
 #UVI, NO, NOX are columns full of NaN values ... 100% NaN = 100% Sure those must be droped
 print(raw18[['UVI']].isna())
 raw18.drop(["UVI","NO","NOX","RS","ET","ATM","RH"], axis=1, inplace=True) #raw18=raw18.drop(......, inplace= False) is equivalent to this line of code
-print(raw18.head()) #Dataframe succesfully changed (Those 3)
+#decided to drop ET, ATM, RH after checking in line 22 while building the rest of the code
+print(raw18.head()) #Dataframe succesfully changed
 
-raw18.dropna(subset=['PM2.5'], inplace=True)
-print(raw18.head())
-print((raw18.isna().mean()*100).sort_values(ascending=False))
+raw18.dropna(subset=['PM2.5'], inplace=True) #Drop any row with our target variable missing
+print(raw18.head()) #Cheking process
+print((raw18.isna().mean()*100).sort_values(ascending=False)) #Checking process to see wich columns I can input or must be droped
 
+print(cl18["PP"].describe())#To see how often I recieve a value diferent from zero, this means how often rains, showed 75%--->0, It doesn't rain most of the time 
 
-raw18['PP'] = raw18['PP'].fillna(0)
-cl18 = raw18.fillna(raw18.mean(numeric_only=True))
+raw18['PP'] = raw18['PP'].fillna(0) #Based on that 75% I prefered fill NaN values with 0 instead with mean, using the mean i´ts like "creating" a mini rain when it´s probably never rained
+cl18 = raw18.fillna(raw18.mean(numeric_only=True)) #The rest of the columns with a missing data percentage under 20% decided to input using the mean of it´s column
 print(cl18.head())
-print((cl18.isna().mean()*100).sort_values(ascending=False))
+print((cl18.isna().mean()*100).sort_values(ascending=False))#Checking Process Complete
 
-print(cl18["PP"].describe())
-
-cl18.to_excel("Clear18.xlsx", index=False)
+cl18.to_excel("Clear18.xlsx", index=False) #Downloaded the clean dataframe
