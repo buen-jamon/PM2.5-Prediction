@@ -21,7 +21,7 @@ raw18.dropna(subset=['PM2.5'], inplace=True) #Drop any row with our target varia
 print(raw18.head()) #Cheking process
 print((raw18.isna().mean()*100).sort_values(ascending=False)) #Checking process to see wich columns I can input or must be droped
 
-print(cl18["PP"].describe())#To see how often I recieve a value diferent from zero, this means how often rains, showed 75%--->0, It doesn't rain most of the time 
+print(raw18["PP"].describe())#To see how often I recieve a value diferent from zero, this means how often rains, showed 75%--->0, It doesn't rain most of the time 
 
 raw18['PP'] = raw18['PP'].fillna(0) #Based on that 75% I prefered fill NaN values with 0 instead with mean, using the mean i´ts like "creating" a mini rain when it´s probably never rained
 cl18 = raw18.fillna(raw18.mean(numeric_only=True)) #The rest of the columns with a missing data percentage under 20% decided to input using the mean of it´s column
