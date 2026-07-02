@@ -13,7 +13,7 @@ raw19.drop(["UVI","NO","NOX"], axis=1, inplace=True) #raw18=raw19.drop(......, i
 ResumenDf(raw19)
 raw19.dropna(subset=['PM2.5'], inplace=True) #Drop any row with our target variable missing
 ResumenDf(raw19)
-#Those 4 presented a missing percentage over 40% so get droped
+#Those 4 presented a missing percentage over 30% so get droped
 raw19.drop(["ET","O3","RS","PP"], axis=1, inplace=True) #raw18=raw19.drop(......, inplace= False) is equivalent to this line of code
 ResumenDf(raw19)
 cl19 = raw19.fillna(raw19.mean(numeric_only=True)) #The rest of the columns with a missing data percentage under 20% decided to input using the mean of it´s column
