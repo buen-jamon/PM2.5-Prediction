@@ -10,7 +10,8 @@ ResumenDf(raw20)
 
 #UVI, NO, NOX are columns full of NaN values ... 90-100% NaN = 100% Sure those must be droped
 raw20.drop(["UVI","NO","NOX"], axis=1, inplace=True) #raw18=raw19.drop(......, inplace= False) is equivalent to this line of code
-ResumenDf(raw20) #We have three columns typed as object, this stops our imput and cleaning missing data.
+ResumenDf(raw20) 
+#We have three columns typed as object, this stops our imput and cleaning missing data.
 print(raw20["PP"].unique()) #Checking the diffetent values in those columns to see any weird thing
 print(raw20["WD"].unique())
 print(raw20["WS"].unique())
